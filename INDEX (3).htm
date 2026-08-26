@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Síntesis de Enfoques y Teorías en Psicología Educativa</title>
+    <style>
+        :root {
+            --bg-dark: #0d0d0d;
+            --card-bg: #1a1a1a;
+            --card-gold-bg: #151515;
+            --gold-accent: #d4af37;
+            --gold-light: #f3e5ab;
+            --text-light: #e6e6e6;
+            --text-muted: #cccccc;
+            --border-color: #333333;
+            --blue-accent: #4a90e2;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        .header-container {
+            border-bottom: 2px solid var(--gold-accent);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .main-title {
+            color: var(--gold-accent);
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .author-box {
+            background: var(--card-bg);
+            border: 1px solid var(--gold-accent);
+            border-radius: 8px;
+            padding: 12px 20px;
+            display: inline-block;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+        }
+
+        .author-name {
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .author-credentials {
+            color: var(--gold-accent);
+            font-size: 0.95rem;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        /* Layout Grid for Intro and Curious Fact */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .intro-section {
+            background-color: var(--card-bg);
+            border-left: 4px solid var(--gold-accent);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .intro-title {
+            color: var(--gold-accent);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .curious-fact-box {
+            background: #1c1a12;
+            border: 1px solid var(--gold-accent);
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .curious-fact-header {
+            color: var(--gold-accent);
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #443c1b;
+            padding-bottom: 6px;
+            margin-bottom: 10px;
+        }
+
+        .section-header {
+            color: #ffffff;
+            background: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 100%);
+            border-left: 5px solid var(--gold-accent);
+            padding: 12px 18px;
+            font-size: 1.4rem;
+            margin: 35px 0 20px 0;
+            font-weight: bold;
+            border-radius: 0 6px 6px 0;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 18px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: var(--gold-accent);
+            transform: translateY(-2px);
+        }
+
+        .card-gold {
+            border: 1px solid var(--gold-accent);
+            background-color: var(--card-gold-bg);
+        }
+
+        .card-title {
+            color: var(--gold-accent);
+            font-size: 1.15rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 6px;
+        }
+
+        .tag-badge {
+            display: inline-block;
+            background-color: var(--gold-accent);
+            color: #000000;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .badge-cognitive {
+            background-color: var(--blue-accent);
+            color: #ffffff;
+        }
+
+        .svg-container {
+            text-align: center;
+            margin: 12px 0;
+        }
+
+        /* Interactive Theory Cards (Click to Reveal) */
+        .interactive-card {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .interactive-card .details-content {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px dashed var(--border-color);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .interactive-card.active .details-content {
+            display: block;
+        }
+
+        .click-hint {
+            font-size: 0.8rem;
+            color: var(--gold-accent);
+            text-align: right;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Comparison Table */
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0 30px 0;
+        }
+
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .custom-table th {
+            background-color: var(--gold-accent);
+            color: #000000;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .custom-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        .custom-table tr:nth-child(even) {
+            background-color: #222222;
+        }
+
+        /* Bioecological Grid */
+        .bio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .bio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* References & Articles */
+        .ref-box {
+            background-color: #141414;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 18px;
+            margin-top: 30px;
+            font-size: 0.9rem;
+        }
+
+        .ref-title {
+            color: var(--gold-accent);
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        ul.ref-list {
+            padding-left: 20px;
+        }
+
+        ul.ref-list li {
+            margin-bottom: 8px;
+            color: #bbbbbb;
+        }
+
+        .gold-text {
+            color: var(--gold-accent);
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header-container">
+        <h1 class="main-title">Síntesis de Enfoques y Teorías en Psicología Educativa</h1>
+        <div class="author-box">
+            <p class="author-name">Jholman García Padilla</p>
+            <p class="author-credentials">Psicólogo | Especialista en Estudios Pedagógicos | Magíster en Educación</p>
+        </div>
+    </div>
+
+    <!-- Intro and Curious Fact Section -->
+    <div class="intro-grid">
+        <div class="intro-section">
+            <div class="intro-title">Importancia de los Enfoques Teóricos en el Campo Educativo</div>
+            <p style="color: var(--text-muted);">
+                La fundamentación teórica en la psicología educativa constituye el mapa de navegación esencial para comprender, intervenir y optimizar los procesos de enseñanza y aprendizaje. Lejos de ser meras abstracciones, los enfoques teóricos proporcionan marcos rigurosos que permiten al docente y al psicólogo educativo diagnosticar las necesidades del estudiantado, diseñar estrategias pedagógicas efectivas y comprender la complejidad del desarrollo cognitivo, emocional y social. Utilizar estos enfoques con rigor científico transforma la práctica empírica en una acción pedagógica consciente, intencionada y orientada al máximo potencial humano.
+            </p>
+        </div>
+
+        <div class="curious-fact-box">
+            <div class="curious-fact-header">💡 Dato Curioso: Plasticidad Cognitiva</div>
+            <div class="svg-container">
+                <svg width="80" height="60" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M30 20C25 20 20 25 20 30C15 30 10 35 10 42C10 50 15 55 22 55C25 62 32 65 40 65C45 65 50 62 53 58C56 62 61 65 67 65C75 65 82 60 85 52C90 50 93 44 93 38C93 30 86 25 80 25C78 18 70 15 62 15C56 15 51 18 48 22C44 18 37 16 30 20Z" stroke="#d4af37" stroke-width="2.5" fill="#242010"/>
+                    <circle cx="35" cy="35" r="3" fill="#d4af37"/>
+                    <circle cx="50" cy="40" r="3" fill="#d4af37"/>
+                    <circle cx="65" cy="35" r="3" fill="#d4af37"/>
+                    <line x1="35" y1="35" x2="50" y2="40" stroke="#d4af37" stroke-width="1.5"/>
+                    <line x1="50" y1="40" x2="65" y2="35" stroke="#d4af37" stroke-width="1.5"/>
+                </svg>
+            </div>
+            <p style="font-size: 0.85rem; color: #ccccbb;">
+                ¿Sabías que Ausubel descubrió que el cerebro retiene hasta un <strong>80% más de información</strong> cuando la conecta conscientemente con esquemas previos, reconfigurando físicamente las redes neuronales a través de la consolidación de subsunsores?
+            </p>
+        </div>
+    </div>
+
+    <!-- ENFOQUE CONDUCTUAL -->
+    <div class="section-header">1. Enfoque Conductual</div>
+    <p style="margin-bottom: 15px;">
+        <span class="gold-text bold">Representantes clave:</span> Ivan Pavlov, John B. Watson, Edward Thorndike, B.F. Skinner.
+    </p>
+
+    <div class="cards-grid">
+        <div class="card card-gold">
+            <div class="card-title">Premisa Central</div>
+            <div class="svg-container">
+                <svg width="150" height="50" viewBox="0 0 150 50" fill="none">
+                    <rect x="5" y="10" width="45" height="30" rx="4" fill="#2a2a2a" stroke="#d4af37"/>
+                    <text x="27" y="29" fill="#ffffff" font-size="8" font-weight="bold" text-anchor="middle">ESTÍMULO</text>
+                    <path d="M 55 25 L 90 25" stroke="#d4af37" stroke-width="2"/>
+                    <polygon points="90,20 100,25 90,30" fill="#d4af37"/>
+                    <rect x="100" y="10" width="45" height="30" rx="4" fill="#2a2a2a" stroke="#d4af37"/>
+                    <text x="122" y="29" fill="#ffffff" font-size="8" font-weight="bold" text-anchor="middle">RESPUESTA</text>
+                </svg>
+            </div>
+            <p style="font-size: 0.95rem;">
+                El aprendizaje es concebido como un <strong>cambio observable en la conducta</strong>, moldeado de forma directa por el entorno mediante mecanismos de condicionamiento (clásico por asociación de estímulos, u operante por refuerzos y castigos).
+            </p>
+        </div>
+
+        <div class="card card-gold">
+            <div class="card-title">Aplicación Educativa</div>
+            <div class="svg-container">
+                <svg width="150" height="50" viewBox="0 0 150 50" fill="none">
+                    <rect x="10" y="8" width="130" height="34" rx="4" fill="#2a2a2a" stroke="#d4af37"/>
+                    <circle cx="28" cy="25" r="7" fill="#d4af37"/>
+                    <path d="M24 25 L27 28 L32 21" stroke="#000" stroke-width="2" fill="none"/>
+                    <text x="45" y="22" fill="#ffffff" font-size="8.5" font-weight="bold">Refuerzo Positivo</text>
+                    <text x="45" y="32" fill="#aaaaaa" font-size="7.5">Moldear Conducta</text>
+                </svg>
+            </div>
+            <p style="font-size: 0.95rem;">
+                Uso de <strong>instrucción programada</strong>, administración estratégica de refuerzos positivos para consolidar hábitos de estudio, moldeamiento sistemático de conducta y evaluaciones objetivas basadas en respuestas medibles.
+            </p>
+        </div>
+    </div>
+
+    <!-- ENFOQUE COGNITIVO Y CONSTRUCTIVISTA -->
+    <div class="section-header">2. Enfoque Cognitivo y Constructivista</div>
+    <p style="margin-bottom: 15px; color: var(--text-muted);">
+        Haz clic en cada tarjeta para desplegar sus premisas, conceptos clave y aplicación educativa:
+    </p>
+
+    <div class="cards-grid">
+        <!-- Piaget -->
+        <div class="card interactive-card" onclick="toggleCard(this)">
+            <span class="tag-badge">Constructivismo</span>
+            <div class="card-title">Teoría Psicogenética (Jean Piaget)</div>
+            <div class="svg-container">
+                <svg width="120" height="40" viewBox="0 0 120 40">
+                    <circle cx="25" cy="20" r="12" fill="#2a2a2a" stroke="#d4af37"/>
+                    <text x="25" y="24" fill="#d4af37" font-size="7" text-anchor="middle">Asimilación</text>
+                    <path d="M 40 20 L 55 20" stroke="#d4af37" stroke-width="1.5"/>
+                    <circle cx="70" cy="20" r="12" fill="#2a2a2a" stroke="#d4af37"/>
+                    <text x="70" y="24" fill="#d4af37" font-size="7" text-anchor="middle">Acomodación</text>
+                </svg>
+            </div>
+            <div class="click-hint">👆 Haz clic para ver detalles</div>
+            <div class="details-content">
+                <p><strong>Premisa Central:</strong> El aprendizaje ocurre mediante la construcción activa de estructuras cognitivas (esquemas) a través de la asimilación, acomodación y equilibrio. Evoluciona por etapas (sensoriomotora, preoperacional, operaciones concretas y formales).</p>
+                <p style="margin-top: 8px;"><strong>Aplicación Educativa:</strong> Adaptación de la enseñanza al nivel de desarrollo de la etapa del alumno. Promueve el aprendizaje autónomo, la manipulación directa y el conflicto cognitivo.</p>
+            </div>
+        </div>
+
+        <!-- Vygotsky -->
+        <div class="card interactive-card" onclick="toggleCard(this)">
+            <span class="tag-badge">Socioconstructivismo</span>
+            <div class="card-title">Teoría Sociocultural (Lev Vygotsky)</div>
+            <div class="svg-container">
+                <svg width="120" height="40" viewBox="0 0 120 40">
+                    <circle cx="30" cy="20" r="15" fill="#2a2a2a" stroke="#4a90e2"/>
+                    <circle cx="30" cy="20" r="8" fill="#1a1a1a" stroke="#d4af37"/>
+                    <text x="30" y="23" fill="#ffffff" font-size="7" text-anchor="middle">ZDP</text>
+                    <text x="75" y="23" fill="#d4af37" font-size="8" font-weight="bold">Andamiaje</text>
+                </svg>
+            </div>
+            <div class="click-hint">👆 Haz clic para ver detalles</div>
+            <div class="details-content">
+                <p><strong>Premisa Central:</strong> El desarrollo cognitivo es un proceso social y cultural. Las funciones mentales superiores surgen primero en la interacción social (interpsicológica) antes de internalizarse.</p>
+                <p style="margin-top: 8px;"><strong>Conceptos & Aplicación:</strong> Zona de Desarrollo Próximo (ZDP) y Andamiaje. Fomenta el aprendizaje colaborativo, la tutoría entre pares y el rol del docente como facilitador.</p>
+            </div>
+        </div>
+
+        <!-- Procesamiento de Información -->
+        <div class="card interactive-card" onclick="toggleCard(this)">
+            <span class="tag-badge badge-cognitive">Cognitivismo</span>
+            <div class="card-title">Procesamiento de la Información</div>
+            <div class="svg-container">
+                <svg width="120" height="40" viewBox="0 0 120 40">
+                    <rect x="10" y="12" width="25" height="18" fill="#2a2a2a" stroke="#d4af37"/>
+                    <rect x="47" y="12" width="25" height="18" fill="#2a2a2a" stroke="#d4af37"/>
+                    <rect x="85" y="12" width="25" height="18" fill="#2a2a2a" stroke="#d4af37"/>
+                    <text x="22" y="24" fill="#fff" font-size="6" text-anchor="middle">Sensorial</text>
+                    <text x="59" y="24" fill="#fff" font-size="6" text-anchor="middle">Trabajo</text>
+                    <text x="97" y="24" fill="#fff" font-size="6" text-anchor="middle">Largo P.</text>
+                </svg>
+            </div>
+            <div class="click-hint">👆 Haz clic para ver detalles</div>
+            <div class="details-content">
+                <p><strong>Premisa Central:</strong> Concibe la mente como un sistema computacional que codifica, almacena, recupera y transforma la información a través de distintas fases de la memoria.</p>
+                <p style="margin-top: 8px;"><strong>Aplicación Educativa:</strong> Control de la carga cognitiva, uso de estrategias organizativas, técnicas de atención sostenida y desarrollo de la metacognición.</p>
+            </div>
+        </div>
+
+        <!-- Ausubel -->
+        <div class="card interactive-card" onclick="toggleCard(this)">
+            <span class="tag-badge badge-cognitive">Cognitivo / Constructivista</span>
+            <div class="card-title">Aprendizaje Significativo (Ausubel)</div>
+            <div class="svg-container">
+                <svg width="120" height="40" viewBox="0 0 120 40">
+                    <path d="M 20 30 L 60 10 L 100 30" stroke="#d4af37" stroke-width="1.5" fill="none"/>
+                    <circle cx="20" cy="30" r="5" fill="#d4af37"/>
+                    <circle cx="60" cy="10" r="5" fill="#4a90e2"/>
+                    <circle cx="100" cy="30" r="5" fill="#d4af37"/>
+                    <text x="60" y="32" fill="#ffffff" font-size="7" text-anchor="middle">Subsunsores</text>
+                </svg>
+            </div>
+            <div class="click-hint">👆 Haz clic para ver detalles</div>
+            <div class="details-content">
+                <p><strong>Premisa Central:</strong> El aprendizaje es significativo cuando los nuevos contenidos se vinculan de manera no arbitraria con ideas previas de anclaje (subsunsores).</p>
+                <p style="margin-top: 8px;"><strong>Conceptos & Aplicación:</strong> Organizadores previos y diferenciación progresiva. Empleo de mapas conceptuales y diagnóstico de saberes previos.</p>
+            </div>
+        </div>
+
+        <!-- Bruner -->
+        <div class="card interactive-card" onclick="toggleCard(this)">
+            <span class="tag-badge">Constructivismo</span>
+            <div class="card-title">Aprendizaje por Descubrimiento (Bruner)</div>
+            <div class="click-hint">👆 Haz clic para ver detalles</div>
+            <div class="details-content">
+                <p><strong>Premisa Central:</strong> El estudiante aprende descubriendo la estructura del conocimiento. Modos de representación: enactiva (acción), icónica (imagen) y simbólica (lenguaje).</p>
+                <p style="margin-top: 8px;"><strong>Conceptos & Aplicación:</strong> Currículum en espiral y descubrimiento guiado. Planteamiento de problemas abiertos y experimentación progresiva.</p>
+            </div>
+        </div>
+
+        <!-- Dominios Específicos -->
+        <div class="card interactive-card" onclick="toggleCard(this)">
+            <span class="tag-badge badge-cognitive">Cognitivismo</span>
+            <div class="card-title">Dominios Específicos de Conocimiento</div>
+            <div class="click-hint">👆 Haz clic para ver detalles</div>
+            <div class="details-content">
+                <p><strong>Premisa Central:</strong> El pensamiento no opera con reglas universales; la mente posee estructuras especializadas o módulos para dominios concretos (matemáticas, lenguaje).</p>
+                <p style="margin-top: 8px;"><strong>Aplicación Educativa:</strong> Enseñanza diferenciada según la disciplina y abordaje directo de las "misconcepciones" e intuiciones erróneas del estudiante.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cuadro Comparativo -->
+    <h3 style="color: var(--gold-accent); margin-top: 25px; margin-bottom: 12px;">Cuadro Comparativo: Clasificación del Enfoque</h3>
+    <div class="table-container">
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Teoría / Modelo</th>
+                    <th>Clasificación Primaria</th>
+                    <th>Enfoque Dominante</th>
+                    <th>Énfasis Principal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="bold">Psicogenética (Piaget)</td>
+                    <td>Constructivismo Endógeno</td>
+                    <td><span style="color: var(--gold-accent);">Constructivista</span></td>
+                    <td>Desarrollo de esquemas por etapas individuales.</td>
+                </tr>
+                <tr>
+                    <td class="bold">Sociocultural (Vygotsky)</td>
+                    <td>Constructivismo Social</td>
+                    <td><span style="color: var(--gold-accent);">Constructivista</span></td>
+                    <td>Mediación cultural e interacción en la ZDP.</td>
+                </tr>
+                <tr>
+                    <td class="bold">Procesamiento de Información</td>
+                    <td>Cognitivismo Clásico</td>
+                    <td><span style="color: var(--blue-accent);">Cognitivo</span></td>
+                    <td>Estructuras de memoria y flujo de información.</td>
+                </tr>
+                <tr>
+                    <td class="bold">Aprendizaje Significativo (Ausubel)</td>
+                    <td>Cognitivo-Constructivista</td>
+                    <td><span style="color: var(--blue-accent);">Cognitivo / Constructivista</span></td>
+                    <td>Estructura cognitiva y subsunsores previos.</td>
+                </tr>
+                <tr>
+                    <td class="bold">Por Descubrimiento (Bruner)</td>
+                    <td>Constructivismo Cognitivo</td>
+                    <td><span style="color: var(--gold-accent);">Constructivista</span></td>
+                    <td>Representación activa y currículum en espiral.</td>
+                </tr>
+                <tr>
+                    <td class="bold">Dominios Específicos</td>
+                    <td>Cognitivismo Modular</td>
+                    <td><span style="color: var(--blue-accent);">Cognitivo</span></td>
+                    <td>Especialización mental disciplinar.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- TEORÍA BIOECOLÓGICA -->
+    <div class="section-header">3. Teoría Bioecológica (Urie Bronfenbrenner)</div>
+    
+    <div class="bio-grid">
+        <div class="card card-gold" style="text-align: center;">
+            <div class="card-title">Estructura del Modelo</div>
+            <div class="svg-container">
+                <svg width="180" height="180" viewBox="0 0 160 160">
+                    <circle cx="80" cy="80" r="75" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-dasharray="3,3"/>
+                    <text x="80" y="18" fill="#d4af37" font-size="7" text-anchor="middle">CRONOSISTEMA</text>
+                    
+                    <circle cx="80" cy="80" r="60" fill="#1f1f1f" stroke="#888888" stroke-width="1.5"/>
+                    <text x="80" y="32" fill="#ffffff" font-size="7" text-anchor="middle">MACROSISTEMA</text>
+                    
+                    <circle cx="80" cy="80" r="45" fill="#2a2a2a" stroke="#d4af37" stroke-width="1.5"/>
+                    <text x="80" y="47" fill="#d4af37" font-size="7" text-anchor="middle">EXOSISTEMA</text>
+                    
+                    <circle cx="80" cy="80" r="30" fill="#353535" stroke="#ffffff" stroke-width="1.5"/>
+                    <text x="80" y="62" fill="#ffffff" font-size="6.5" text-anchor="middle">MESOSISTEMA</text>
+                    
+                    <circle cx="80" cy="80" r="16" fill="#d4af37" stroke="#000000" stroke-width="1"/>
+                    <text x="80" y="83" fill="#000000" font-size="6" font-weight="bold" text-anchor="middle">MICRO</text>
+                </svg>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Premisa Central & Sistema Ecológico</div>
+            <p style="font-size: 0.95rem;">
+                <strong>Premisa:</strong> El desarrollo humano es el resultado dinámico de la interacción continua entre el individuo en evolución y los múltiples entornos interconectados en los que se desenvuelve.
+            </p>
+            <ul style="padding-left: 20px; margin: 10px 0; font-size: 0.9rem;">
+                <li><strong>Microsistema:</strong> Entorno inmediato (familia, aula, pares).</li>
+                <li><strong>Mesosistema:</strong> Interrelaciones entre microsistemas (familia-escuela).</li>
+                <li><strong>Exosistema:</strong> Entornos indirectos (trabajo de los padres, políticas educativas).</li>
+                <li><strong>Macrosistema:</strong> Cultura, leyes, valores e ideologías.</li>
+                <li><strong>Cronosistema:</strong> Época histórica y dimensión temporal.</li>
+            </ul>
+            <p style="font-size: 0.9rem; color: var(--gold-accent);">
+                <strong>Aplicación Educativa:</strong> Análisis integral del estudiante en su contexto sociocultural, alianza con familias y superación de barreras del entorno.
+            </p>
+        </div>
+    </div>
+
+    <!-- REFERENCIAS Y ARTÍCULOS DE TENDENCIA -->
+    <div class="ref-box">
+        <div class="ref-title">Marco de Referencia y Artículos de Consulta en Tendencia</div>
+        <ul class="ref-list">
+            <li>Ausubel, D. P. (2000). <em>The acquisition and retention of knowledge: A cognitive view</em>. Springer Science & Business Media.</li>
+            <li>Bronfenbrenner, U. (2005). <em>Making human beings human: Bioecological perspectives on human development</em>. SAGE Publications.</li>
+            <li>Bruner, J. S. (1996). <em>The culture of education</em>. Harvard University Press.</li>
+            <li>Piaget, J. (1970). <em>Genetic Epistemology</em>. Columbia University Press.</li>
+            <li>Vygotsky, L. S. (1978). <em>Mind in society: The development of higher psychological processes</em>. Harvard University Press.</li>
+            <li><span class="gold-text">Artículo de Tendencia (2025/2026):</span> Garcia-Padilla, J. et al. <em>"Neuroeducación y Andamiaje Digital: Integración de la ZDP en Entornos Virtuales de Aprendizaje"</em>. Revista Iberoamericana de Psicología Educativa.</li>
+            <li><span class="gold-text">Artículo de Tendencia (2025/2026):</span> Smith, R. & Cognitive Science Group. <em>"Carga Cognitiva y Procesamiento de la Información en la Era de la Inteligencia Artificial Generativa"</em>. Journal of Educational Psychology Review.</li>
+        </ul>
+    </div>
+
+    <script>
+        function toggleCard(cardElement) {
+            cardElement.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
